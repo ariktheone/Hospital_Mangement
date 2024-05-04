@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.js
 
-function App() {
-  const [count, setCount] = useState(0)
+import React, { useState } from "react";
+import Dashboard from "./Dashboard";
+import Hospital from "./Hospital";
+import Doctors from "./Doctors";
+import Bloodbank from "./BloodBank";
+import Ambulance from "./Ambulance";
+import CitySelection from "./CitySelection";
+
+import "./App.css";
+import "./index.css";
+import UserAuthentication from "./UserAuthentication";
+import KolkataHospital from "./KolkataHospital";
+
+const App = () => {
+  const [active, setActive] = useState("");
+  function clickMenu(menu) {
+    setActive(menu);
+  }
+  const hospitalData = {
+    name: "Sample Hospital",
+    women: 150,
+    men: 120,
+    totalPatients: 270,
+    doctors: 15,
+    payout: 50000,
+    appointment: "Available",
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-container">
+      <div className="dashboard">
+      <Dashboard  clickMenu={clickMenu} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <div className="content-container">
+        {active === "hospital" && <Hospital/>}
+        {active === "CitySelection" && <CitySelection clickMenu={clickMenu}/>}
+        {active === "doctors" && <Doctors />}
+        {active === "bloodbank" && <Bloodbank />}
+        {active === "ambulance" && <Ambulance/>}
+        {active==="userProfile"&& <UserAuthentication/>}
+        {active==="Kolkata"&& <KolkataHospital />}
 
-export default App
+      </div>
+      
+     
+      
+    </div>
+  );
+};
+
+export default App;

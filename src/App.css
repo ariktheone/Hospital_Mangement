@@ -1,42 +1,48 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f2f2f4;
+  
+}
+
+.app-container {
+  display: flex;
+  
+}
+
+.content-container {
+  margin-left:15rem;
   padding: 2rem;
-  text-align: center;
+  width: 100%;
+  margin-right: 2rem;
+}
+.dashboard{
+  
+  display: fixed;
+  
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 640px){
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    
   }
-  to {
-    transform: rotate(360deg);
+  .dashboard{
+    width:2rem;
+    display: fixed;
+    top:0;
+    z-index: 2;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .content-container {
+    margin:0;
+    padding-right:4rem;
+    margin-top:4rem ;
+    width: 90%;
   }
+  
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+/* Add styling for App component as needed */
